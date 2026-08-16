@@ -1,12 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Painel de Controle API - Produtos</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Painel de Controle API</h1>
+      <p class="subtitle">Gerenciamento de Produtos</p>
+
+      <div class="operations">
+        <!-- LISTAR TODOS -->
+        <div class="card">
+          <h2>Listar Todos os Produtos</h2>
+
+          <p>Busca todos os produtos cadastrados na API.</p>
+
+          <button class="btn-get" onclick="listarProdutos()">
+            Listar Todos
+          </button>
+        </div>
+
+        <!-- FILTRAR POR CATEGORIA -->
+        <div class="card">
+          <h2>Filtrar por Categoria</h2>
+
+          <p>
+            Informe uma categoria para encontrar os produtos correspondentes.
+          </p>
+
+          <div class="input-group">
+            <input type="text" id="categoria" placeholder="Ex: Eletrônicos" />
+
+            <button class="btn-filter" onclick="filtrarCategoria()">
+              Filtrar
+            </button>
+          </div>
+        </div>
+
+        <!-- BUSCAR POR ID -->
+        <div class="card">
+          <h2>Buscar por ID</h2>
+
+          <p>Informe o ID do produto que deseja consultar.</p>
+
+          <div class="input-group">
+            <input
+              type="number"
+              id="idBusca"
+              placeholder="ID do produto"
+              min="1"
+            />
+
+            <button class="btn-search" onclick="buscarPorId()">
+              Buscar por ID
+            </button>
+          </div>
+        </div>
+
+        <!-- DELETAR POR ID -->
+        <div class="card">
+          <h2>Deletar Produto</h2>
+
+          <p>Informe o ID do produto que deseja remover.</p>
+
+          <div class="input-group">
+            <input
+              type="number"
+              id="idDelete"
+              placeholder="ID do produto"
+              min="1"
+            />
+
+            <button class="btn-delete" onclick="deletarProduto()">
+              Deletar
+            </button>
+          </div>
+        </div>
+
+        <!-- CADASTRAR PRODUTO -->
+        <div class="card register-card">
+          <h2>Cadastrar Produto</h2>
+
+          <p>Preencha os dados para cadastrar um novo produto.</p>
+
+          <form
+            class="register-form"
+            onsubmit="
+              event.preventDefault();
+              cadastrarProduto();
+            "
+          >
+            <div class="form-group">
+              <label for="nome"> Nome do Produto </label>
+
+              <input
+                type="text"
+                id="nome"
+                placeholder="Nome do produto"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="categoriaCadastro"> Categoria </label>
+
+              <input
+                type="text"
+                id="categoriaCadastro"
+                placeholder="Categoria"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="preco"> Preço </label>
+
+              <input
+                type="number"
+                id="preco"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn-post">Cadastrar Produto</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ÁREA DE LOG -->
+      <div class="log-container">
+        <div class="log-header">
+          <h2>Resultado da Operação</h2>
+
+          <button class="btn-reset" onclick="limparLog()">
+            Limpar / Reset
+          </button>
+        </div>
+
+        <div id="log">Aguardando ação...</div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
