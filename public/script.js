@@ -1,43 +1,4 @@
 // =====================================================
-// ELEMENTOS DA PÁGINA
-// =====================================================
-
-// Área onde os resultados serão exibidos
-const log = document.getElementById("log");
-
-// =====================================================
-// BOTÕES
-// =====================================================
-
-const btnListar = document.getElementById("btnListar");
-
-const btnFiltrar = document.getElementById("btnFiltrar");
-
-const btnBuscarId = document.getElementById("btnBuscarId");
-
-const btnCadastrar = document.getElementById("btnCadastrar");
-
-const btnDeletar = document.getElementById("btnDeletar");
-
-const btnReset = document.getElementById("btnReset");
-
-// =====================================================
-// CAMPOS DE ENTRADA
-// =====================================================
-
-const inputCategoria = document.getElementById("categoria");
-
-const inputIdBusca = document.getElementById("idBusca");
-
-const inputNome = document.getElementById("nome");
-
-const inputCategoriaCadastro = document.getElementById("categoriaCadastro");
-
-const inputPreco = document.getElementById("preco");
-
-const inputIdDelete = document.getElementById("idDelete");
-
-// =====================================================
 // ENDPOINT DA API
 // =====================================================
 
@@ -50,7 +11,7 @@ const API_URL = "http://localhost:3000/produtos";
 
 function mostrarLog(mensagem, dados = null) {
 
-    const log = document.getElementById('log');
+    const log = document.getElementById("log");
 
     let resultado = mensagem;
 
@@ -64,6 +25,7 @@ function mostrarLog(mensagem, dados = null) {
 // =====================================================
 // 1. LISTAR TODOS OS PRODUTOS
 // MÉTODO: GET
+// NOME: listarProdutos()
 // =====================================================
 
 async function listarProdutos() {
@@ -89,10 +51,49 @@ async function listarProdutos() {
     };
 };
 
+
+// =====================================================
+// 2. FILTRAR POR CATEGORIA 
+// MÉTODO: GET
+// QUERY PARAMETER: req.query
+// NOME: filtrarCategoria()
+// =====================================================
+
+// aa
+
+
+// =====================================================
+// 3. BUSCAR PRODUTO POR ID
+// MÉTODO: GET
+// ROUTE PARAMETER: req.params
+// NOME: buscarPorId()
+// =====================================================
+
+// aa
+
+
+// =====================================================
+// 4. CADASTRAR PRODUTO
+// MÉTODO: POST
+// BODY: req.body\
+// NOME: cadastrarProduto()
+// =====================================================
+
+// aa
+
+
+// =====================================================
+// 5. DELETAR PRODUTO POR ID
+// MÉTODO: DELETE
+// ROUTE PARAMETER: req.params
+// NOME: deletarProduto()
+// =====================================================
+
+// aa
+
+
 // =====================================================
 // 6. LIMPAR / RESETAR LOG
 // =====================================================
 
-function limparLog() {
-    document.getElementById("log").textContent = "Aguardando ação...";
-};
+// aa
