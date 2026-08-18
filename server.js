@@ -8,7 +8,7 @@
 // Cada arquivo é um módulo separado individualmente, usando o import é possível       
 // fazer uma certa correlação entre esses arquivos.                                    
 //======================================================================================
-// O app.use()
+
 
 import express from "express";
 import cors from "cors";
@@ -19,6 +19,7 @@ const PORTA = 3000;
 //==========================================================================================================================
 //app use com "express json" faz com que o express consiga interpretar dados enviados em formato JSON, principalmente no POST.
 //app use "cors" habilita o cors, um mecanismo de segurança dos navegadores.
+// OBS: desta forma não violamos a Same-Origin Policy (Política de Mesma Origem).
 //==========================================================================================================================
 
 app.use(cors());
@@ -58,7 +59,8 @@ const corretor = (text) => {
 
 app.listen(PORTA, () => {
   console.log(
-    `Servidor Rodando com Sucesso na porta: ${PORTA}/n URL: http://localhost:${PORTA}/produtos`,
+    `Servidor Rodando com Sucesso na porta: ${PORTA}
+URL: http://localhost:${PORTA}/produtos`,
   );
 });
 
@@ -74,8 +76,8 @@ app.get("/produtos", (req, res) => {
 // Filtrar por categoria
 // ========================================
 
-app.get("/produtos/categoria/:categoria", (req, res) => {
-  const categoria = req.params.categoria;
+app.get("/produtos/categoria", (req, res) => {
+  const categoria = req.query.categoria;
   
 //===============================================================================================
 //O filter percorre todos os produtos e mantém somente aqueles que possuem a categoria procurada.
@@ -128,4 +130,21 @@ app.post("/produtos", (req, res) => {
 // Deletar produto
 // ========================================
 
-// aa
+app.delete("/produtos/:id", (req, res) => {
+  // captura o id da url via req.params
+  const idBusca = parseInt(req.params.id);
+
+  // 2. procura a posição do produto no array
+  const index = produtos.findIndex((p) => p.id === idBusca);
+
+  // se não encontrar o produto, devolve Status 404
+  if (index === -1) {
+    return res.status(404).json({ mensagem: "Produto não encontrado." });
+  }
+
+  // remove o produto do array
+  produtos.splice(index, 1);
+
+  // retorna mensagem de sucesso com status 200
+  res.status(200).json({ mensagem: "Produto deletado com sucesso" });
+});
