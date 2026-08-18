@@ -3,10 +3,10 @@
 // ========================================
 
 //======================================================================================
-// O import abaixo é usado para trazer códigos como variáveis, funções e outras coisas |
-// de outros arquivos estrangeiros para essa sintaxe.                                  |
-// Cada arquivo é um módulo separado individualmente, usando o import é possível       |
-// fazer uma certa correlação entre esses arquivos.                                    |
+// O import abaixo é usado para trazer códigos como variáveis, funções e outras coisas 
+// de outros arquivos estrangeiros para essa sintaxe.                                  
+// Cada arquivo é um módulo separado individualmente, usando o import é possível       
+// fazer uma certa correlação entre esses arquivos.                                    
 //======================================================================================
 // O app.use()
 
@@ -15,6 +15,11 @@ import cors from "cors";
 
 const app = express();
 const PORTA = 3000;
+
+//==========================================================================================================================
+//app use com "express json" faz com que o express consiga interpretar dados enviados em formato JSON, principalmente no POST.
+//app use "cors" habilita o cors, um mecanismo de segurança dos navegadores.
+//==========================================================================================================================
 
 app.use(cors());
 app.use(express.json());
@@ -71,6 +76,10 @@ app.get("/produtos", (req, res) => {
 
 app.get("/produtos/categoria/:categoria", (req, res) => {
   const categoria = req.params.categoria;
+  
+//===============================================================================================
+//O filter percorre todos os produtos e mantém somente aqueles que possuem a categoria procurada.
+//===============================================================================================
 
   const resultado = produtos.filter(
     (produto) => corretor(produto.categoria) === corretor(categoria),
