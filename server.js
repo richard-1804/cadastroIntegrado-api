@@ -1,7 +1,3 @@
-// ========================================
-// Constantes Obrigatórias Para o Servidor
-// ========================================
-
 //======================================================================================
 // O import abaixo é usado para trazer códigos como variáveis, funções e outras coisas 
 // de outros arquivos estrangeiros para essa sintaxe.                                  
